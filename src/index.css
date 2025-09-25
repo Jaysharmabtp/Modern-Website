@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Spiritual Color Palette */
+    --background: 45 100% 98%;
+    --foreground: 15 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 15 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 15 25% 15%;
+
+    /* Sacred Saffron Primary */
+    --primary: 30 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 35 100% 65%;
+
+    /* Temple Gold Secondary */
+    --secondary: 45 100% 50%;
+    --secondary-foreground: 15 25% 15%;
+
+    /* Warm Cream Muted */
+    --muted: 45 60% 95%;
+    --muted-foreground: 15 15% 45%;
+
+    /* Maroon Accent */
+    --accent: 0 75% 25%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 45 50% 90%;
+    --input: 45 50% 95%;
+    --ring: 30 100% 60%;
+
+    /* Divine Gradients */
+    --gradient-divine: linear-gradient(135deg, hsl(30 100% 60%), hsl(45 100% 50%));
+    --gradient-temple: linear-gradient(180deg, hsl(45 100% 98%), hsl(30 80% 95%));
+    --gradient-sacred: linear-gradient(45deg, hsl(0 75% 25%), hsl(15 70% 30%));
+    
+    /* Sacred Shadows */
+    --shadow-divine: 0 10px 40px -10px hsl(30 100% 60% / 0.3);
+    --shadow-temple: 0 20px 60px -10px hsl(45 100% 50% / 0.2);
+    --shadow-sacred: 0 8px 32px -8px hsl(0 75% 25% / 0.4);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 15 25% 8%;
+    --foreground: 45 60% 95%;
+
+    --card: 15 20% 12%;
+    --card-foreground: 45 60% 95%;
+
+    --popover: 15 20% 12%;
+    --popover-foreground: 45 60% 95%;
+
+    --primary: 30 100% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 45 80% 40%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 15 15% 15%;
+    --muted-foreground: 45 30% 65%;
+
+    --accent: 0 75% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 15 15% 20%;
+    --input: 15 15% 20%;
+    --ring: 30 100% 60%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .divine-glow {
+    box-shadow: var(--shadow-divine);
+  }
+  
+  .temple-glow {
+    box-shadow: var(--shadow-temple);
+  }
+  
+  .sacred-glow {
+    box-shadow: var(--shadow-sacred);
+  }
+  
+  .gradient-divine {
+    background: var(--gradient-divine);
+  }
+  
+  .gradient-temple {
+    background: var(--gradient-temple);
+  }
+  
+  .gradient-sacred {
+    background: var(--gradient-sacred);
+  }
+}
