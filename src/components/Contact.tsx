@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { Phone, Mail, MapPin, MessageCircle, Clock, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,11 +8,9 @@ import { Label } from '@/components/ui/label';
 
 const Contact = () => {
   const addressLines = [
-    'Prachin Shiv Mandir',
-    'GX6Q+PMX, The Westerlies Rd',
-    'Experion The Heartsong, Sector 108',
-    'Gurugram, Haryana 122017',
-    'India',
+    'Prachin Shiv Mandir Shri Shri 1008 Brahmarshi Geetanand Ashram',
+    'Dharampur Sec. 108',
+    'Gurugram',
   ];
   const addressFull = addressLines.join(', ');
   const mapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(addressFull)}`;
@@ -20,7 +19,7 @@ const Contact = () => {
       icon: Phone,
       title: 'Phone Consultation',
       description: 'Direct call for immediate guidance',
-      contact: '7976904849',
+      contact: '9772274025',
       action: 'Call Now',
       variant: 'divine' as const,
     },
@@ -36,7 +35,7 @@ const Contact = () => {
       icon: Mail,
       title: 'Email Inquiry',
       description: 'Detailed questions and consultations',
-      contact: 'panditji@example.com',
+      contact: 'lakhan.Panditji09@gmail.com',
       action: 'Send Email',
       variant: 'sacred' as const,
     },
@@ -50,7 +49,7 @@ const Contact = () => {
   ];
 
   const WHATSAPP_NUMBER = '917976904849'; // with country code, no plus
-  const CALL_NUMBER = '+917976904849';
+  const CALL_NUMBER = '+919772274025';
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -134,7 +133,13 @@ const Contact = () => {
                       <div className="flex-1">
                         <h4 className="font-semibold text-foreground mb-1">{method.title}</h4>
                         <p className="text-sm text-muted-foreground mb-2">{method.description}</p>
-                        <p className="text-sm font-medium text-foreground mb-3">+91 {method.contact}</p>
+                        <p className="text-sm font-medium text-foreground mb-3">
+                          {method.title.includes('Email') ? (
+                            <span>{method.contact}</span>
+                          ) : (
+                            <span>+91 {method.contact}</span>
+                          )}
+                        </p>
                         {href ? (
                           <Button asChild variant={method.variant} size="sm" className="w-full">
                             <a href={href} target={method.title.includes('WhatsApp') ? '_blank' : undefined} rel={method.title.includes('WhatsApp') ? 'noopener noreferrer' : undefined}>
@@ -166,11 +171,9 @@ const Contact = () => {
                     <span className="font-semibold text-foreground">Temple Address</span>
                   </div>
                   <p className="text-muted-foreground ml-6">
-                    Prachin Shiv Mandir<br />
-                    GX6Q+PMX, The Westerlies Rd<br />
-                    Experion The Heartsong, Sector 108<br />
-                    Gurugram, Haryana 122017<br />
-                    India
+                    Prachin Shiv Mandir Shri Shri 1008 Brahmarshi Geetanand Ashram<br />
+                    Dharampur Sec. 108<br />
+                    Gurugram
                   </p>
                 </div>
 
@@ -179,7 +182,7 @@ const Contact = () => {
                     <Phone className="w-4 h-4 text-primary" />
                     <span className="font-semibold text-foreground">Temple Office</span>
                   </div>
-                  <a href="tel:+917976904849" className="text-foreground ml-6 hover:text-primary">+91 7976904849</a>
+                  <a href="tel:+919772274025" className="text-foreground ml-6 hover:text-primary">+91 9772274025</a>
                 </div>
 
                 <Button asChild variant="divine" className="w-full">
@@ -312,11 +315,9 @@ const Contact = () => {
                   <div className="flex-1">
                     <h4 className="font-semibold text-foreground mb-2">Visit Our Temple</h4>
                     <p className="text-muted-foreground">
-                      Prachin Shiv Mandir<br />
-                      GX6Q+PMX, The Westerlies Rd<br />
-                      Experion The Heartsong, Sector 108<br />
-                      Gurugram, Haryana 122017<br />
-                      India
+                      Prachin Shiv Mandir Shri Shri 1008 Brahmarshi Geetanand Ashram<br />
+                      Dharampur Sec. 108<br />
+                      Gurugram
                     </p>
                     <Button asChild variant="outline" className="mt-4">
                       <a href={mapsUrl} target="_blank" rel="noopener noreferrer">

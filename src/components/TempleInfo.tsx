@@ -4,11 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const TempleInfo = () => {
   const addressLines = [
-    'Prachin Shiv Mandir',
-    'GX6Q+PMX, The Westerlies Rd',
-    'Experion The Heartsong, Sector 108',
-    'Gurugram, Haryana 122017',
-    'India',
+    'Prachin Shiv Mandir Shri Shri 1008 Brahmarshi Geetanand Ashram',
+    'Dharampur Sec. 108',
+    'Gurugram',
   ];
   const addressFull = addressLines.join(', ');
   const mapsUrl = `https://www.google.com/maps?q=${encodeURIComponent(addressFull)}`;
@@ -18,11 +16,14 @@ const TempleInfo = () => {
     { day: 'Special Days', morning: '4:00 AM - 1:00 PM', evening: '3:00 PM - 10:00 PM' },
   ];
 
-  const events = [
-    { name: 'Maha Shivratri', date: 'February 18, 2024', type: 'Grand Celebration' },
-    { name: 'Pradosh Vrat', date: 'Every 13th day', type: 'Monthly Observance' },
-    { name: 'Somvar Vrat', date: 'Every Monday', type: 'Weekly Ritual' },
-    { name: 'Rudrabhishek', date: 'Daily', time: '6:00 AM & 6:00 PM' },
+  const events: Array<{ name: string; date: string; type: string; time?: string }> = [
+    { name: 'Somvar Shiv Puja', date: 'Every Monday', type: 'Weekly Puja', time: 'Morning & Evening Aarti' },
+    { name: 'Diwali – Lakshmi Pujan', date: 'This Diwali', type: 'Festival', time: '7:00 PM' },
+    { name: 'Govardhan Puja & Annakoot', date: 'Next Day after Diwali', type: 'Festival' },
+    { name: 'Bhai Dooj', date: 'Two days after Diwali', type: 'Festival' },
+    { name: 'Kartik Purnima Deepdan', date: 'This Month', type: 'Festival', time: 'Evening' },
+    { name: 'Navratri Special Pujas', date: 'During Navratri', type: 'Festival', time: 'Morning & Evening' },
+    { name: 'Mahashivratri Mahotsav', date: 'Upcoming', type: 'Festival', time: 'All Night Jagran' },
   ];
 
   return (
@@ -83,11 +84,9 @@ const TempleInfo = () => {
                     <div>
                       <p className="font-medium text-foreground">Temple Address</p>
                       <p className="text-muted-foreground">
-                        Prachin Shiv Mandir<br />
-                        GX6Q+PMX, The Westerlies Rd<br />
-                        Experion The Heartsong, Sector 108<br />
-                        Gurugram, Haryana 122017<br />
-                        India
+                        Prachin Shiv Mandir Shri Shri 1008 Brahmarshi Geetanand Ashram<br />
+                        Dharampur Sec. 108<br />
+                        Gurugram
                       </p>
                     </div>
                   </div>
@@ -96,7 +95,7 @@ const TempleInfo = () => {
                     <Phone className="w-5 h-5 text-primary" />
                     <div>
                       <p className="font-medium text-foreground">Temple Office</p>
-                      <a href="tel:+917976904849" className="text-muted-foreground hover:text-primary">+91 7976904849</a>
+                      <a href="tel:+919772274025" className="text-muted-foreground hover:text-primary">+91 9772274025</a>
                     </div>
                   </div>
                 </div>
@@ -121,7 +120,7 @@ const TempleInfo = () => {
                 <img
                   src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4npRAJkRMwtVyt7X21mMMgLr9XDnn516YqngHi4Zq2-ao-yRpVqxxKzlV11G7YrL__z18bgby1EeLjFZKnzPEnXxOhGohidf-0mAmR9IL259nd7lwj3xaEYW6T8eYsjm8Y8e0Bd-pNYO0CKR=s1360-w1360-h1020-rw"
                   alt="Prachin Shiv Mandir temple view"
-                  className="w-full h-[280px] md:h-[360px] object-cover"
+                  className="w-full h-[280px] md:h-[360px] object-cover object-[center_20%]"
                   loading="lazy"
                   decoding="async"
                 />
@@ -157,34 +156,7 @@ const TempleInfo = () => {
               </CardContent>
             </Card>
 
-            {/* Upcoming Events */}
-            <Card className="border-border/50">
-              <CardHeader>
-                <CardTitle className="font-serif text-xl text-foreground flex items-center">
-                  <Calendar className="w-6 h-6 text-primary mr-3" />
-                  Temple Events
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {events.map((event, index) => (
-                    <div key={index} className="flex items-start space-x-3 p-3 rounded-lg bg-muted/30">
-                      <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
-                      <div className="flex-1">
-                        <h4 className="font-medium text-foreground">{event.name}</h4>
-                        <p className="text-sm text-muted-foreground">{event.date}</p>
-                        {event.time && (
-                          <p className="text-sm text-muted-foreground">{event.time}</p>
-                        )}
-                        <span className="inline-block text-xs bg-primary/10 text-primary px-2 py-1 rounded-full mt-1">
-                          {event.type}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            {/* Upcoming Events (moved to full width below) */}
 
             {/* Temple Services */}
             <div className="grid grid-cols-2 gap-4">
@@ -203,6 +175,37 @@ const TempleInfo = () => {
             </div>
           </div>
         </div>
+
+        {/* Full-width Upcoming Events grid to use available space */}
+        <Card className="mt-8 border-border/50">
+          <CardHeader>
+            <CardTitle className="font-serif text-2xl text-foreground flex items-center">
+              <Calendar className="w-6 h-6 text-primary mr-3" />
+              Temple Events
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {events.slice(0, 8).map((event, index) => (
+                <div key={index} className="p-4 rounded-xl bg-muted/30 border border-border/40 h-full">
+                  <div className="flex items-start gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-foreground leading-snug">{event.name}</h4>
+                      <p className="text-sm text-muted-foreground leading-snug">{event.date}</p>
+                      {event.time && (
+                        <p className="text-sm text-muted-foreground leading-snug">{event.time}</p>
+                      )}
+                      <span className="inline-block text-[11px] bg-primary/10 text-primary px-2 py-0.5 rounded-full mt-2">
+                        {event.type}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );

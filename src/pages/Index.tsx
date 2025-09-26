@@ -4,6 +4,8 @@ import About from '@/components/About';
 import Services from '@/components/Services';
 import TempleInfo from '@/components/TempleInfo';
 import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
+import TestimonialsCarousel from '@/components/TestimonialsCarousel';
 
 const Index = () => {
   const galleryImages = [
@@ -24,29 +26,10 @@ const Index = () => {
       <Hero />
       <About />
       <Services />
-      {/* Testimonials */}
-      <section id="testimonials" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif font-bold text-foreground mb-2">Testimonials</h2>
-            <p className="text-muted-foreground">What devotees and clients say about their experience</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              'Accurate guidance and very compassionate approach. Highly recommended!',
-              'Our puja was conducted with utmost devotion and proper rituals.',
-              'Kundali analysis was detailed and helpful for our family decisions.',
-            ].map((quote, i) => (
-              <div key={i} className="p-6 rounded-xl border border-border/50 bg-card shadow-sm">
-                <p className="text-foreground">“{quote}”</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsCarousel />
 
       {/* Gallery */}
-      <section id="gallery" className="py-20 bg-background">
+      <section id="gallery" className="py-20 bg-background pb-24 md:pb-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-serif font-bold text-foreground mb-2">Gallery</h2>
@@ -54,19 +37,25 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryImages.map((src, i) => (
-              <a key={i} href={src} target="_blank" rel="noopener noreferrer" className="relative overflow-hidden rounded-xl border border-border/50 bg-card block">
-                <div className="w-full aspect-[4/3] bg-muted/50 flex items-center justify-center">
+              <a
+                key={i}
+                href={src}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative overflow-hidden rounded-xl border border-border/50 bg-card block transition-transform duration-200 hover:scale-[1.01]"
+                aria-label={`Open larger view of temple photo ${i + 1}`}
+              >
+                <div className="w-full aspect-square bg-muted/40">
                   <img
                     src={src}
                     alt={`Temple photo ${i + 1}`}
-                    className="max-w-full max-h-full object-contain"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                     referrerPolicy="no-referrer"
                     onError={(e) => {
                       const el = e.currentTarget as HTMLImageElement;
-                      // simple inline SVG placeholder
                       const svg = encodeURIComponent(
-                        `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300'>\n  <rect width='100%' height='100%' fill='${'#f1f5f9'}'/>\n  <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='${'#64748b'}' font-family='Arial, sans-serif' font-size='16'>Image not found</text>\n</svg>`
+                        `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'>\n  <rect width='100%' height='100%' fill='${'#f1f5f9'}'/>\n  <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='${'#64748b'}' font-family='Arial, sans-serif' font-size='16'>Image not found</text>\n</svg>`
                       );
                       el.src = `data:image/svg+xml;charset=utf-8,${svg}`;
                     }}
@@ -79,6 +68,7 @@ const Index = () => {
       </section>
       <TempleInfo />
       <Contact />
+      <Footer />
     </div>
   );
 };

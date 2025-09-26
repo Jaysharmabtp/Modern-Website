@@ -1,5 +1,54 @@
+import * as React from 'react';
 import { Award, Book, Users, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+
+const useCounter = (end: number, duration = 1500) => {
+  const [value, setValue] = React.useState(0);
+  const ref = React.useRef<HTMLDivElement | null>(null);
+  React.useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    let started = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !started) {
+            started = true;
+            const start = performance.now();
+            const step = (t: number) => {
+              const progress = Math.min((t - start) / duration, 1);
+              setValue(Math.floor(progress * end));
+              if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [end, duration]);
+  return { ref, value } as const;
+};
+
+const Counters: React.FC = () => {
+  const clients = useCounter(500, 1800);
+  const years = useCounter(15, 1800);
+  return (
+    <div className="mb-6 grid grid-cols-2 gap-6 max-w-md">
+      <div ref={clients.ref} className="p-4 rounded-xl bg-card border border-border/50 text-center">
+        <div className="text-3xl font-bold text-primary">{clients.value}+ </div>
+        <div className="text-sm text-muted-foreground">Happy Clients</div>
+      </div>
+      <div ref={years.ref} className="p-4 rounded-xl bg-card border border-border/50 text-center">
+        <div className="text-3xl font-bold text-secondary">{years.value}+ </div>
+        <div className="text-sm text-muted-foreground">Years Experience</div>
+      </div>
+    </div>
+  );
+};
+
 const About = () => {
   const achievements = [
     {
@@ -47,6 +96,8 @@ const About = () => {
                 Pandit Ji
               </span>
             </h2>
+            {/* Animated Counters */}
+            <Counters />
             
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p className="text-lg">

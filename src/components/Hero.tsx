@@ -1,18 +1,27 @@
-import { Calendar, MessageCircle, Star } from 'lucide-react';
+import { Calendar, MessageCircle, Star, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import panditJiPhoto from '@/assets/pandit-ji-photo.jpg';
 
 const Hero = () => {
+  // External hero image provided by user
+  const heroImageUrl =
+    'https://lh3.googleusercontent.com/gps-cs-s/AC9h4npcz5bx2ePbVsEmOBzv2piDCSVR11YXzUBcry3tcHZ4cy2W8nVTBxA2_wBs0V7xsQehfsy-jTge9rvqVqlocLlW2NLD4Paf4cBCQAmmtjiymIowmoIp0VEZgP1AX509i0d2D6thljfRAjo=s1360-w1360-h1020-rw';
   const scrollToId = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center gradient-temple">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary))_0%,transparent_50%)]"></div>
+    <section id="home" className="relative min-h-screen flex items-center gradient-temple overflow-hidden">
+      {/* Cosmic Background Layer */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top,hsl(260_60%_40%_/_0.45),transparent_60%),radial-gradient(ellipse_at_bottom,hsl(290_60%_35%_/_0.35),transparent_60%)]" />
+        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary))_0%,transparent_50%)]" />
+        {/* Stars */}
+        <div
+          className={
+            `absolute inset-0 bg-[url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><circle cx='2' cy='2' r='1' fill='white' opacity='0.7'/><circle cx='60' cy='20' r='1' fill='white' opacity='0.5'/><circle cx='90' cy='70' r='1' fill='white' opacity='0.6'/><circle cx='30' cy='80' r='1' fill='white' opacity='0.5'/></svg>")] opacity-40`
+          }
+        />
       </div>
       
       <div className="container mx-auto px-4 py-20 relative z-10">
@@ -92,9 +101,17 @@ const Hero = () => {
               {/* Main Image */}
               <div className="relative z-10 bg-card rounded-3xl p-2 divine-glow">
                 <img
-                  src={panditJiPhoto}
+                  src={heroImageUrl}
                   alt="Pandit Lakhan Lal Sharma performing religious rituals in traditional saffron attire"
                   className="w-full h-auto rounded-2xl object-cover"
+                  loading="eager"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                />
+                {/* Mask any top-left overlay text like '4 months ago' on the source photo */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute top-2 left-2 right-2 h-10 rounded-t-xl bg-gradient-to-b from-card via-card/80 to-transparent"
                 />
               </div>
 
@@ -111,6 +128,11 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      {/* Scroll Down Arrow */}
+      <a href="#about" className="hidden md:flex items-center gap-2 absolute bottom-6 left-1/2 -translate-x-1/2 text-foreground/80 hover:text-primary transition-colors">
+        <ChevronDown className="w-6 h-6 animate-bounce" />
+        <span className="text-sm">Scroll</span>
+      </a>
     </section>
   );
 };

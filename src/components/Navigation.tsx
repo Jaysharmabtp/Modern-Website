@@ -82,9 +82,9 @@ const Navigation = () => {
 
           {/* Contact Info & CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <a href="tel:+917976904849" className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary">
+            <a href="tel:+919772274025" className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-primary">
               <Phone className="w-4 h-4" />
-              <span className="tracking-wide whitespace-nowrap">+91 7976904849</span>
+              <span className="tracking-wide whitespace-nowrap">+91 9772274025</span>
             </a>
             <Button asChild variant="divine" size="sm" className="whitespace-nowrap shadow-sm">
               <a href="#contact">Book Appointment</a>
@@ -115,9 +115,9 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="pt-4 border-t border-border">
-                <a href="tel:+917976904849" className="flex items-center space-x-2 text-sm text-muted-foreground mb-3 hover:text-primary">
+                <a href="tel:+919772274025" className="flex items-center space-x-2 text-sm text-muted-foreground mb-3 hover:text-primary">
                   <Phone className="w-4 h-4" />
-                  <span className="whitespace-nowrap">+91 7976904849</span>
+                  <span className="whitespace-nowrap">+91 9772274025</span>
                 </a>
                 <Button asChild variant="divine" className="w-full">
                   <a href="#contact">Book Appointment</a>
