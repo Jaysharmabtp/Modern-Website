@@ -1,6 +1,5 @@
 import { Award, Book, Users, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-
 const About = () => {
   const achievements = [
     {
